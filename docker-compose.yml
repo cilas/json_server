@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  json_server:
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    container_name: json_server
+    restart: always
+    tty: true
+    working_dir: /usr/src/app
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    networks:
+      - local_default
+#Docker Network
+networks:
+  local_default:
+    external:
+      name: local_default
